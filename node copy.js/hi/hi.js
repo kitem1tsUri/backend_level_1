@@ -6,7 +6,7 @@ const users = [
   { id: 2, firstName: "tsetsgee", lastName: "haliuaa" },
 ];
 
-const posts = [
+let posts = [
   {
     id: "1",
     title: "hi",
@@ -59,7 +59,7 @@ exports.getUser = (request, response, next) => {
 exports.updatePost = (request, response, next) => {
   const { title, message } = request.body;
   const { id } = request.params;
-  posts[id-1] = {
+  posts[id - 1] = {
     id: id,
     title: title,
     message: message,
@@ -77,6 +77,15 @@ exports.updateUser = (request, response, next) => {
       .status(200)
       .json({ message: `User with ${request.params.id} id is updated` });
   }
+};
+
+exports.deletePost = (request, response, next) => {
+  const { id } = request.params;
+  const otherPost = posts.filter((cur) => cur.id !== id);
+
+  posts = otherPost;
+
+  response.status(200).json(posts);
 };
 
 exports.deleteUser = (request, response, next) => {

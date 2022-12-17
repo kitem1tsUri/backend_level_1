@@ -8,6 +8,7 @@ const { getUsers ,
     updateUser , 
     deleteUser , 
     createPost ,
+    deletePost ,
     updatePost , 
     getPosts 
 } = require("./hi");
@@ -17,10 +18,12 @@ router
    .post("/", createUser)
 //    .get("/:id", getUser)
 //    .put("/:id", updateUser )
-   .delete("/:id", deleteUser)
+ //  .delete("/:id", deleteUser)
    .post("/posts",createPost)
    .patch("/:id", updatePost)
+   .delete("/:id", deletePost)
    .post("/:id", getPosts);
+   
 
 
 module.exports = router;
